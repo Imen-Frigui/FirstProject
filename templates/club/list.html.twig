@@ -4,6 +4,8 @@
 {% for j in f %}
     {% set maxV= max(j.nb_participants, maxV) %}
   {% endfor %}
+<h3>Le nombre de Maximale de nb_participants est {{maxV}} </h3>
+
 <table border="2">
     <tr>
         <th>Référence </th>
@@ -12,7 +14,7 @@
         <th> NombreParticipants </th>
     </tr>
     {% for i in f %}
-    {% if i.nb_participants == maxV %}
+   {# {% if i.nb_participants == maxV %}}
     {#{% if 'theorique' in i.Description %}#}
   <tr>
     <td> {{i.ref}}</td>
@@ -20,12 +22,17 @@
     <td> {{i.Description}}</td>
     <td> {{i.nb_participants}}</td>
   </tr>
-  {% endif %}
+  {#{% endif %}#}
   {% endfor %}
 </table>
-{# MAX#}
+{# MAX
 {% set maxV = 0 %}
 {% for j in f %}
     {% set maxV= max(j.nb_participants, maxV) %}
   {% endfor %}
-{{maxV}}
+#}
+{% set somme = 0 %}
+ {% for t in f %}
+    {% set somme = somme + t.nb_participants %}
+ {% endfor %}
+<h3>Le somme totale de participant {{somme}}</h3>
